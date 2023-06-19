@@ -12,10 +12,10 @@ app.get('/shop/:id', async (req, res) => {
       // if there's a "category" query, filter the returned posts by category
       if(req.query.category){
           // Obtain the published "posts" by category
-          items = await blogData.getPublishedItemsByCategory(req.query.category);
+          items = await itemData.getPublishedItemsByCategory(req.query.category);
       }else{
           // Obtain the published "posts"
-          items = await blogData.getPublishedItems();
+          items = await itemData.getPublishedItems();
       }
 
       // sort the published items by postDate
@@ -45,6 +45,6 @@ app.get('/shop/:id', async (req, res) => {
       viewData.categoriesMessage = "no results"
   }
 
-  // render the "blog" view with all of the data (viewData)
+  // render the "shop" view with all of the data (viewData)
   res.render("shop", {data: viewData})
 });
